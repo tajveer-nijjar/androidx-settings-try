@@ -2,10 +2,17 @@
 using Android.App;
 using Android.OS;
 using Android.Runtime;
-using Android.Support.Design.Widget;
-using Android.Support.V7.App;
+using Google.Android.Material;
+using AndroidX.AppCompat.App;
+using AndroidX.Preference;
+
+//using Android.Support.Design.Widget;
+//using Android.Support.V7.App;
 using Android.Views;
 using Android.Widget;
+using Google.Android.Material.FloatingActionButton;
+using Google.Android.Material.Snackbar;
+using Android.Content;
 
 namespace SettingsPageTry2
 {
@@ -18,7 +25,7 @@ namespace SettingsPageTry2
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             SetContentView(Resource.Layout.activity_main);
 
-            Android.Support.V7.Widget.Toolbar toolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolbar);
+            AndroidX.AppCompat.Widget.Toolbar toolbar = FindViewById<AndroidX.AppCompat.Widget.Toolbar>(Resource.Id.toolbar);
             SetSupportActionBar(toolbar);
 
             FloatingActionButton fab = FindViewById<FloatingActionButton>(Resource.Id.fab);
@@ -36,7 +43,8 @@ namespace SettingsPageTry2
             int id = item.ItemId;
             if (id == Resource.Id.action_settings)
             {
-                return true;
+                var intent = new Intent(this, typeof(SettingsActivity));
+                StartActivity(intent);
             }
 
             return base.OnOptionsItemSelected(item);
